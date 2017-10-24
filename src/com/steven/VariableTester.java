@@ -42,9 +42,9 @@ public class VariableTester {
 	    System.out.println(x >= y);
 	    System.out.println(x <= y);
 	  //
-	    System.out.println(x >> 1);
-	    x++;
-	    x--;
+	    System.out.println(x >> 1);//x往右一個bit
+	    x++;//x累加也可以x = x + 1
+	    x--;//x累減也可以x = x + 1
 	    System.out.println(x);
 	    
 	    
