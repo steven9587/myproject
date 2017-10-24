@@ -20,6 +20,7 @@ public class Hello {
 	   int age = Integer.parseInt(line);
 	   System.out.println(line);
 	   System.out.println( !(age > 18));
+
 	}
 
 }

@@ -28,6 +28,26 @@ public class VariableTester {
 	    int n4 = r.nextInt(6)+1;
 	  //  
 	    System.out.println(3 <= 2);
+	  //
+		float f = 5.0f;
+	    int x = 5;
+		int y = 3;
+	    int z = x % y;
+	    System.out.println(z);
+	    
+	    System.out.println(x == y);
+	    System.out.println(x != y);
+	    System.out.println(x > y);
+	    System.out.println(x < y);
+	    System.out.println(x >= y);
+	    System.out.println(x <= y);
+	  //
+	    System.out.println(x >> 1);
+	    x++;
+	    x--;
+	    System.out.println(x);
+	    
+	    
 	}
 
 }
