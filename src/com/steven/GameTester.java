@@ -5,32 +5,82 @@ import java.util.Scanner;
 public class GameTester {
 
 	public static void main(String[] args) {
-		for (int a = 1; a > 0; a++) {
-		System.out.print("請輸入一個數字2 4 8 6 0其中一個數字:");
 		Scanner scanner = new Scanner(System.in);
-		String line = scanner.nextLine();
-		int number = Integer.parseInt(line);
+		int hp = 100;
+		int d = -1;
+		int pos = 0;
+		int row = 3;
+		int col = 5;
 
-			switch (number) {
-			case 2:
-				System.out.println("向下 ");
-				break;
-			case 4:
-				System.out.println("向左");
-				break;
-			case 8:
-				System.out.println("向上 ");
-				break;
-			case 6:
-				System.out.println("向右 ");
-				break;
-			case 0:
-				break;
+		// 下
+		if (pos / col < row - 1) {
+			pos = pos + col;
+
+			// 上
+			if (pos / col >= row - 2) {
+				pos = pos - col;
+
+				// 左
+				if (pos % col != 0) {
+					pos = pos - 1;
+
+					// 右
+					if (pos % col != col - 1) {
+						pos = pos + 1;
+					}
+				}
 			}
-			if(number==0){
-				break;
+
+			while (d != 0) {
+				System.out.print("請輸入方向:");
+				String direction = scanner.nextLine();
+				d = Integer.parseInt(direction);
+				switch (d) {
+				case 8:
+					if (pos / col >= row - 2) {
+						pos = pos - col;
+						System.out.println("向上");
+						System.out.println(hp = hp - 5);
+					} else {
+						System.out.println(hp = hp - 30);
+					}
+					break;
+
+				case 4:
+					if (pos % col != 0) {
+						pos = pos - 1;
+						System.out.println("向左");
+						System.out.println(hp = hp - 5);
+					} else {
+						System.out.println(hp = hp - 30);
+					}
+					break;
+
+				case 6:
+					if (pos % col != col - 1) {
+						pos = pos + 1;
+						System.out.println("向右");
+						System.out.println(hp = hp - 5);
+					} else {
+						System.out.println(hp = hp - 30);
+					}
+					break;
+
+				case 2:
+					if (pos / col < row - 1) {
+						pos = pos + col;
+						System.out.println("向下");
+						System.out.println(hp = hp - 5);
+					} else {
+						System.out.println(hp = hp - 30);
+					}
+					break;
+				}
+				if (hp < 0) {
+					System.out.println("Game Over");
+				}
+
 			}
 		}
 	}
-
 }
