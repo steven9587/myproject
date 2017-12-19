@@ -17,7 +17,7 @@ public class Dice {
 				System.out.print(n3 + " ");
 				System.out.print(n4 + " ");
 			
-				if((n1!=n2)&&n1!=n3&&n1!=n4&&n2!=n3&&n2!=n4&&n3!=n4){
+				if(n1!=n2&&n1!=n3&&n1!=n4&&n2!=n3&&n2!=n4&&n3!=n4){
 					System.out.print("*");
 				}
 			System.out.println();
