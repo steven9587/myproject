@@ -7,6 +7,12 @@ public class Student {
 	int english;//(ÄÝ©Ê)
 	int math;//(ÄÝ©Ê)
 	int chinese;//(ÄÝ©Ê)
+	
+	public Student(){
+		
+	}
+	
+	
 
 	public void print() {
 		System.out.println(english + "\t" + math + "\t" + chinese);
