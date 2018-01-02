@@ -1,5 +1,19 @@
 package Student;
 
 public class GraduateStudent extends Student {
-	int thisis;
+	int thesis;
+
+	public GraduateStudent() {
+
+	}
+
+	@Override//½Æ¼g
+	public void print() {
+		System.out.println(english + "\t" + math + "\t" + chinese + "\t" + thesis);
+	}
+	
+	@Override//½Æ¼g
+	public int getAverage() {
+		return (english + math + chinese + thesis) / 4;
+	}
 }

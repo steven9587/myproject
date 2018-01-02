@@ -7,6 +7,7 @@ public class Student {
 	int english;//(ÄÝ©Ê)
 	int math;//(ÄÝ©Ê)
 	int chinese;//(ÄÝ©Ê)
+	static int pass = 60;
 	
 	public Student(){
 		
@@ -27,6 +28,10 @@ public class Student {
 	
 	public Student (String name){
 		name = name;
+	}
+	
+	public static void method(){
+		System.out.println("hello");
 	}
 
 	public int getAverage() {
