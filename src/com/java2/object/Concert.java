@@ -12,6 +12,7 @@ public class Concert {
 	
 	public void gettotal(){
 		int total =(price*number);
+		System.out.println("總金額："+total);
 	}
 	
 	
