@@ -1,12 +1,12 @@
 package com.java2.object;
 
-public class MRT {
-	private int snumber;
-	private int lnumber;
-	private int price = 10;
-	private int total;
+public class MRTMoney {
+	protected int snumber;
+	protected int lnumber;
+	protected int price = 10;
+	protected int total;
 
-	public MRT(int snumber, int lnumber) {
+	public MRTMoney(int snumber, int lnumber) {
 		this.snumber = snumber;
 		this.lnumber = lnumber;
 	}
@@ -23,5 +23,4 @@ public class MRT {
 			System.out.println(total);
 		}
 	}
-
 }
