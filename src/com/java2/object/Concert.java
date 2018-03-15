@@ -2,8 +2,8 @@ package com.java2.object;
 
 public class Concert {
 	
-	private int price = 1000;
-	private int number;
+	protected int price = 1000;
+	protected int number;
 	
 	public Concert(int price,int number){
 		this.price = price;
