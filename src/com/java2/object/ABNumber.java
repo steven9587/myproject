@@ -21,7 +21,6 @@ public class ABNumber {
 					} else {
 						result = result + 1;
 					}
-					break;
 				}
 			}
 		}
