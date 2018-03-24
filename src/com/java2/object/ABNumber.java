@@ -5,14 +5,13 @@ public class ABNumber {
 
 	public ABNumber(String number) {
 		this.number = number;
-	}
+	} 
 
 	public int validate(String secret) {
 		int result = 0;
-		int length = secret.length();
 
-		for (int i = 0; i < length; i++) {
-			for (int f = 0; f < length; f++) {
+		for (int i = 0; i < secret.length(); i++) {
+			for (int f = 0; f < secret.length(); f++) {
 				char s = secret.charAt(i);
 				char n = number.charAt(f);
 				if (s == n) {
