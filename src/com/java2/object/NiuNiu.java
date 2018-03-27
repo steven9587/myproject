@@ -14,11 +14,11 @@ public class NiuNiu {
 		Scanner scanner = new Scanner(System.in);
 		String line = scanner.nextLine();
 		int number = Integer.parseInt(line);
-
+		// 建立一套porker
 		for (int i = 0; i < porker.length; i++) {
 			porker[i] = i;
 		}
-
+		// 洗牌
 		for (int i = 0; i < porker.length; i++) {
 			int r = random.nextInt(52);
 			int temp = porker[i];
@@ -30,7 +30,6 @@ public class NiuNiu {
 			int c = porker[i];
 			System.out.println(flowers.charAt(c / 13) + "" + (c % 13 + 1));
 			if (i % 5 == 0) {
-				
 				System.out.println();
 			}
 		}
