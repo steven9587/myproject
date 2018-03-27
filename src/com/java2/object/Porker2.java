@@ -17,7 +17,9 @@ public class Porker2 {
 		// 洗牌
 		for (int i = 0; i < 52; i++) {
 			int r = random.nextInt(52);
-			porker.add(porker.get(r));
+			int temp = porker.get(i);
+			porker.set(i, porker.get(r));
+			porker.set(r, temp);
 		}
 
 		for (int i = 0; i < 52; i++) {
