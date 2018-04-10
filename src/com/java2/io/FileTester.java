@@ -13,10 +13,10 @@ public class FileTester {
 			out.flush();
 			out.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("file not");
+			System.out.println("File Not Found! ");
 			;
 		} catch (IOException e) {
-			System.out.println("file not");
+			System.out.println("file Output Problem ");
 		}
 	}
 
