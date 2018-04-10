@@ -10,6 +10,8 @@ public class FileTester {
 		try {
 			FileOutputStream out = new FileOutputStream("data.txt");
 			out.write(65);
+			out.write(66);
+			out.write(67);
 			out.flush();
 			out.close();
 		} catch (FileNotFoundException e) {
