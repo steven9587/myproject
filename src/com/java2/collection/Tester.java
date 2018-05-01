@@ -8,13 +8,15 @@ import java.util.Set;
 public class Tester {
 
 	public static void main(String[] args) {
+		//list按順序存取可重複
 		List<Integer> list = new ArrayList<>();
 		list.add(4);
 		list.add(1);
 		list.add(3);
 		list.add(1);
-		System.out.println(list);
-		Set<Integer> set = new HashSet<>();
+	    System.out.println(list);
+        //set沒順序不可重複
+	    Set<Integer> set = new HashSet<>();
 		set.add(4);
 		set.add(1);
 		set.add(3);
