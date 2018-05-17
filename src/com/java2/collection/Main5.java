@@ -1,27 +1,26 @@
 package com.java2.collection;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main5 {
 
 	public static void main(String[] args) {
+		boolean a;
 		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		list.add(6);
-		list.add(7);
-		list.remove(0);
-		list.remove(1);
-		list.remove(2);
-		list.remove(3);
-
-        System.out.print(list.get(2));
-        System.out.print(" "+list.get(1));
-        System.out.print(" "+list.get(0));
+		Scanner scanner = new Scanner(System.in);
+		while (a = scanner.nextLine() != null) {
+			String line = scanner.nextLine();
+			int num = Integer.parseInt(line);
+			if (num % 2 == 0) {
+				list.add(num);
+			}
+		}
+		Collections.reverse(list);
+		for(int i:list) {
+			System.out.println(i);
+		}
 	}
-
 }
