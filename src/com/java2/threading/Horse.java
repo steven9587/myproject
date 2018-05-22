@@ -12,5 +12,6 @@ public class Horse extends Thread {
 				e.printStackTrace();
 			}
 		}
+		
 	}
 }
