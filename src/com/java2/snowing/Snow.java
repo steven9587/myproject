@@ -18,7 +18,8 @@ public class Snow extends Thread {
 
 	@Override
 	public void run() {
-		for (int i = y; i < 600; i++) {
+		while (true) {
+		//for (int i = y; i < 600; i++) {
 			// System.out.println(getName()+"("+x+","+y+")");
 			y = y + 1;
 			x = x + (random.nextInt(3) - 1);
@@ -29,6 +30,9 @@ public class Snow extends Thread {
 				sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+			}
+			if(y==600) {
+				y=0;
 			}
 		}
 	}
