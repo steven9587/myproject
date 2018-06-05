@@ -1,5 +1,10 @@
 package com.java2.oo;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 /*
  * 有一遊戲場地，長寬由執行時決定，場地中亂數產生陷阱 陷阱數也由當時才決定
  * 
@@ -9,8 +14,28 @@ package com.java2.oo;
  */
 
 public class MazeMain {
+	public MazeMain() {
+		try {
+			FileReader fr = new FileReader("maze.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String line = br.readLine();
+			String tokens[] = line.split(",");
+			int col = Integer.parseInt(tokens[0]);
+			int row = Integer.parseInt(tokens[1]);
+			line = br.readLine();
+			int trapCount = Integer.parseInt(line);
+			Maze m =new Maze(row, col, trapCount);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	public static void main(String[] args) {
-		
+		new MazeMain();
 	}
 
 	public class Maze {
@@ -25,11 +50,11 @@ public class MazeMain {
 			this.col = col;
 			this.trapCount = trapCount;
 		}
-		
+
 		public void setRow(int row) {
-			this.row=row;
+			this.row = row;
 		}
-		
+
 		public int getRow() {
 			return row;
 		}
@@ -65,8 +90,7 @@ public class MazeMain {
 		public void setPlayer(Player player) {
 			this.player = player;
 		}
-		
-		
+
 	}
 
 	public class Player {
