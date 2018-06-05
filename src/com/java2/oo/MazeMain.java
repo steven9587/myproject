@@ -4,18 +4,20 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 /*
  * 有一遊戲場地，長寬由執行時決定，場地中亂數產生陷阱 陷阱數也由當時才決定
  * 
  * 有一個玩家在這場地中，初始PH值為100，走一步消耗1HP， 撞到邊界扣5HP，掉到陷阱扣20HP
  * 
- * 有個檔案(maze.txt)資訊如下： 6,4 5 6,8,2,4,2,2,6,6,8,4,2,2,6
+ * 有個檔案(maze.txt)資訊如下： 6,4,5,6,8,2,4,2,2,6,6,8,4,2,2,6
  */
 
 public class MazeMain {
 	public MazeMain() {
 		try {
+			//讀取資料
 			FileReader fr = new FileReader("maze.txt");
 			BufferedReader br = new BufferedReader(fr);
 			String line = br.readLine();
@@ -25,11 +27,71 @@ public class MazeMain {
 			line = br.readLine();
 			int trapCount = Integer.parseInt(line);
 			Maze m =new Maze(row, col, trapCount);
+			//走路扣血
+			Scanner scanner = new Scanner(System.in);
+			while (m.player.HP!=0) {
+				System.out.println("請輸入上(8)下(2)左(4)右(6)：");
+				String step =scanner.nextLine();
+				switch (step) {
+				case "8":
+					if(m.player.location/6==0) {
+						System.out.println("撞牆!");
+						m.player.HP-=5;
+						System.out.println("目前位置："+m.player.location);
+						System.out.println("目前血量："+m.player.HP);
+					}else {
+						m.player.location-=6;
+						m.player.HP-=1;
+						System.out.println("目前位置："+m.player.location);
+						System.out.println("目前血量："+m.player.HP);
+					}
+					break;
+				case "2":
+					if(m.player.location/6==3) {
+						System.out.println("撞牆!");
+						m.player.HP-=5;
+						System.out.println("目前位置："+m.player.location);
+						System.out.println("目前血量："+m.player.HP);
+					}else {
+						m.player.location+=6;
+						m.player.HP-=1;
+						System.out.println("目前位置："+m.player.location);
+						System.out.println("目前血量："+m.player.HP);
+					}
+					break;
+				case "4":
+					if(m.player.location%6==0) {
+						System.out.println("撞牆!");
+						m.player.HP-=5;
+						System.out.println("目前位置："+m.player.location);
+						System.out.println("目前血量："+m.player.HP);
+					}else {
+						m.player.location-=1;
+						m.player.HP-=1;
+						System.out.println("目前位置："+m.player.location);
+						System.out.println("目前血量："+m.player.HP);
+					}
+					break;
+				case "6":
+					if(m.player.location%6==5) {
+						System.out.println("撞牆!");
+						m.player.HP-=5;
+						System.out.println("目前位置："+m.player.location);
+						System.out.println("目前血量："+m.player.HP);
+					}else {
+						m.player.location+=1;
+						m.player.HP-=1;
+						System.out.println("目前位置："+m.player.location);
+						System.out.println("目前血量："+m.player.HP);
+					}
+					break;
+				default:
+					break;
+				}
+			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
