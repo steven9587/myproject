@@ -62,81 +62,66 @@ public class MazeMain {
 						if (m.player.location / 6 == 0) {
 							System.out.println("撞牆!");
 							m.player.HP -= 5;
-							System.out.println("目前位置：" + m.player.location);
-							System.out.println("目前血量：" + m.player.HP);
 						} else {
 							m.player.location -= 6;
 							for (int a = 0; a < set.size(); a++) {
-								if (m.trapLocation[a] == m.player.location) {
+								if (m.trapLocation[a] != m.player.location) {
 									m.player.HP -= 20;
-									System.out.println("目前位置：" + m.player.location);
-									System.out.println("目前血量：" + m.player.HP);
 								}
 							}
-							m.player.HP -= 1;
-							System.out.println("目前位置：" + m.player.location);
-							System.out.println("目前血量：" + m.player.HP);
+							m.player.HP -= 1;	
 						}
+						System.out.println("目前位置：" + m.player.location);
+						System.out.println("目前血量：" + m.player.HP);
 						break;
 					case "2":
 						if (m.player.location / 6 == 3) {
 							System.out.println("撞牆!");
 							m.player.HP -= 5;
-							System.out.println("目前位置：" + m.player.location);
-							System.out.println("目前血量：" + m.player.HP);
 						} else {
 							m.player.location += 6;
 							for (int a = 0; a < set.size(); a++) {
 								if (m.trapLocation[a] == m.player.location) {
 									m.player.HP -= 20;
-									System.out.println("目前位置：" + m.player.location);
-									System.out.println("目前血量：" + m.player.HP);
+									break;
 								}
 							}
 							m.player.HP -= 1;
-							System.out.println("目前位置：" + m.player.location);
-							System.out.println("目前血量：" + m.player.HP);
 						}
+						System.out.println("目前位置：" + m.player.location);
+						System.out.println("目前血量：" + m.player.HP);
 						break;
 					case "4":
 						if (m.player.location % 6 == 0) {
 							System.out.println("撞牆!");
 							m.player.HP -= 5;
-							System.out.println("目前位置：" + m.player.location);
-							System.out.println("目前血量：" + m.player.HP);
 						} else {
 							m.player.location -= 1;
 							for (int a = 0; a < set.size(); a++) {
 								if (m.trapLocation[a] == m.player.location) {
 									m.player.HP -= 20;
-									System.out.println("目前位置：" + m.player.location);
-									System.out.println("目前血量：" + m.player.HP);
 								}
 							}
-							m.player.HP -= 1;
-							System.out.println("目前位置：" + m.player.location);
-							System.out.println("目前血量：" + m.player.HP);
+							m.player.HP -= 1;	
 						}
+						System.out.println("目前位置：" + m.player.location);
+						System.out.println("目前血量：" + m.player.HP);
 						break;
 					case "6":
 						if (m.player.location % 6 == 5) {
 							System.out.println("撞牆!");
 							m.player.HP -= 5;
-							System.out.println("目前位置：" + m.player.location);
-							System.out.println("目前血量：" + m.player.HP);
 						} else {
 							m.player.location += 1;
 							for (int a = 0; a < set.size(); a++) {
 								if (m.trapLocation[a] == m.player.location) {
 									m.player.HP -= 20;
-									System.out.println("目前位置：" + m.player.location);
-									System.out.println("目前血量：" + m.player.HP);
 								}
 							}
 							m.player.HP -= 1;
-							System.out.println("目前位置：" + m.player.location);
-							System.out.println("目前血量：" + m.player.HP);
 						}
+						System.out.println("目前位置：" + m.player.location);
+					    System.out.println("目前血量：" + m.player.HP);
 						break;
 					default:
 						break;
