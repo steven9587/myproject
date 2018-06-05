@@ -4,7 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 /*
  * 有一遊戲場地，長寬由執行時決定，場地中亂數產生陷阱 陷阱數也由當時才決定
@@ -17,17 +22,34 @@ import java.util.Scanner;
 public class MazeMain {
 	public MazeMain() {
 		try {
-			// 讀取資料
+			// 讀取資料(地圖大小)
 			FileReader fr = new FileReader("maze.txt");
 			BufferedReader br = new BufferedReader(fr);
 			String line = br.readLine();
 			String tokens[] = line.split(",");
 			int col = Integer.parseInt(tokens[0]);
 			int row = Integer.parseInt(tokens[1]);
+
+			// 讀取資料(陷阱個數)
 			line = br.readLine();
 			int trapCount = Integer.parseInt(line);
 			Maze m = new Maze(row, col, trapCount);
-			// 走路扣血
+			Random r = new Random();
+			Set<String> set = new TreeSet<>();
+			while (set.size() < 5) {
+				String trap = String.valueOf(r.nextInt(24));
+				set.add(trap);
+			}
+
+			Iterator it = set.iterator();
+			m.trapLocation = new int[set.size()];
+			for (int a = 0; a < set.size(); a++) {
+				int i = Integer.parseInt(String.valueOf(it.next()));
+				m.trapLocation[a] = i;
+				System.out.println(m.trapLocation[a]);
+			}
+
+			// 讀取資料(走路扣血)
 			line = br.readLine();
 			String steps[] = line.split(",");
 			Scanner scanner = new Scanner(System.in);
@@ -44,6 +66,13 @@ public class MazeMain {
 							System.out.println("目前血量：" + m.player.HP);
 						} else {
 							m.player.location -= 6;
+							for (int a = 0; a < set.size(); a++) {
+								if (m.trapLocation[a] == m.player.location) {
+									m.player.HP -= 20;
+									System.out.println("目前位置：" + m.player.location);
+									System.out.println("目前血量：" + m.player.HP);
+								}
+							}
 							m.player.HP -= 1;
 							System.out.println("目前位置：" + m.player.location);
 							System.out.println("目前血量：" + m.player.HP);
@@ -57,6 +86,13 @@ public class MazeMain {
 							System.out.println("目前血量：" + m.player.HP);
 						} else {
 							m.player.location += 6;
+							for (int a = 0; a < set.size(); a++) {
+								if (m.trapLocation[a] == m.player.location) {
+									m.player.HP -= 20;
+									System.out.println("目前位置：" + m.player.location);
+									System.out.println("目前血量：" + m.player.HP);
+								}
+							}
 							m.player.HP -= 1;
 							System.out.println("目前位置：" + m.player.location);
 							System.out.println("目前血量：" + m.player.HP);
@@ -70,6 +106,13 @@ public class MazeMain {
 							System.out.println("目前血量：" + m.player.HP);
 						} else {
 							m.player.location -= 1;
+							for (int a = 0; a < set.size(); a++) {
+								if (m.trapLocation[a] == m.player.location) {
+									m.player.HP -= 20;
+									System.out.println("目前位置：" + m.player.location);
+									System.out.println("目前血量：" + m.player.HP);
+								}
+							}
 							m.player.HP -= 1;
 							System.out.println("目前位置：" + m.player.location);
 							System.out.println("目前血量：" + m.player.HP);
@@ -83,6 +126,13 @@ public class MazeMain {
 							System.out.println("目前血量：" + m.player.HP);
 						} else {
 							m.player.location += 1;
+							for (int a = 0; a < set.size(); a++) {
+								if (m.trapLocation[a] == m.player.location) {
+									m.player.HP -= 20;
+									System.out.println("目前位置：" + m.player.location);
+									System.out.println("目前血量：" + m.player.HP);
+								}
+							}
 							m.player.HP -= 1;
 							System.out.println("目前位置：" + m.player.location);
 							System.out.println("目前血量：" + m.player.HP);
