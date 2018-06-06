@@ -50,11 +50,13 @@ public class MazeMain {
 			}
 
 			// 讀取資料(走路扣血)
+			int judgment;
 			line = br.readLine();
 			String steps[] = line.split(",");
 			Scanner scanner = new Scanner(System.in);
 			for (int i = 0; i < steps.length; i++) {
-				if (m.player.HP != 0) {
+				if (m.player.HP > 0) {
+					judgment = 0;
 					System.out.println("請輸入上(8)下(2)左(4)右(6)：");
 					System.out.println(steps[i]);
 					switch (steps[i]) {
@@ -65,15 +67,24 @@ public class MazeMain {
 						} else {
 							m.player.location -= 6;
 							for (int a = 0; a < set.size(); a++) {
-								if (m.trapLocation[a] != m.player.location) {
-									m.player.HP -= 20;
+								if (m.trapLocation[a] == m.player.location) {
+									judgment = 1;
 								}
 							}
-							m.player.HP -= 1;	
+							if (judgment == 1) {
+								m.player.HP -= 20;
+							} else {
+								m.player.HP -= 1;
+							}
 						}
-						System.out.println("目前位置：" + m.player.location);
-						System.out.println("目前血量：" + m.player.HP);
-						break;
+						if (m.player.HP > 0) {
+							System.out.println("目前位置：" + m.player.location);
+							System.out.println("目前血量：" + m.player.HP);
+							break;
+						} else {
+							System.out.println("Game Over!");
+							break;
+						}
 					case "2":
 						if (m.player.location / 6 == 3) {
 							System.out.println("撞牆!");
@@ -82,15 +93,23 @@ public class MazeMain {
 							m.player.location += 6;
 							for (int a = 0; a < set.size(); a++) {
 								if (m.trapLocation[a] == m.player.location) {
-									m.player.HP -= 20;
-									break;
+									judgment = 1;
 								}
 							}
-							m.player.HP -= 1;
+							if (judgment == 1) {
+								m.player.HP -= 20;
+							} else {
+								m.player.HP -= 1;
+							}
 						}
-						System.out.println("目前位置：" + m.player.location);
-						System.out.println("目前血量：" + m.player.HP);
-						break;
+						if (m.player.HP > 0) {
+							System.out.println("目前位置：" + m.player.location);
+							System.out.println("目前血量：" + m.player.HP);
+							break;
+						} else {
+							System.out.println("Game Over!");
+							break;
+						}
 					case "4":
 						if (m.player.location % 6 == 0) {
 							System.out.println("撞牆!");
@@ -99,14 +118,23 @@ public class MazeMain {
 							m.player.location -= 1;
 							for (int a = 0; a < set.size(); a++) {
 								if (m.trapLocation[a] == m.player.location) {
-									m.player.HP -= 20;
+									judgment = 1;
 								}
 							}
-							m.player.HP -= 1;	
+							if (judgment == 1) {
+								m.player.HP -= 20;
+							} else {
+								m.player.HP -= 1;
+							}
 						}
-						System.out.println("目前位置：" + m.player.location);
-						System.out.println("目前血量：" + m.player.HP);
-						break;
+						if (m.player.HP > 0) {
+							System.out.println("目前位置：" + m.player.location);
+							System.out.println("目前血量：" + m.player.HP);
+							break;
+						} else {
+							System.out.println("Game Over!");
+							break;
+						}
 					case "6":
 						if (m.player.location % 6 == 5) {
 							System.out.println("撞牆!");
@@ -115,14 +143,23 @@ public class MazeMain {
 							m.player.location += 1;
 							for (int a = 0; a < set.size(); a++) {
 								if (m.trapLocation[a] == m.player.location) {
-									m.player.HP -= 20;
+									judgment = 1;
 								}
 							}
-							m.player.HP -= 1;
+							if (judgment == 1) {
+								m.player.HP -= 20;
+							} else {
+								m.player.HP -= 1;
+							}
 						}
-						System.out.println("目前位置：" + m.player.location);
-					    System.out.println("目前血量：" + m.player.HP);
-						break;
+						if (m.player.HP > 0) {
+							System.out.println("目前位置：" + m.player.location);
+							System.out.println("目前血量：" + m.player.HP);
+							break;
+						} else {
+							System.out.println("Game Over!");
+							break;
+						}
 					default:
 						break;
 					}
