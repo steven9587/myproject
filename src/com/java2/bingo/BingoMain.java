@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
-import com.java2.oo.MazeMain.Maze;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BingoMain {
 	public BingoMain() {
@@ -15,10 +16,10 @@ public class BingoMain {
 			BufferedReader br = new BufferedReader(fr);
 			String line = br.readLine();
 			int number = Integer.parseInt(line);
-			int table =  (int) Math.sqrt(number);
-			//System.out.println(number);
-			//System.out.println(table);
-			Form form = new Form(table,number);
+			int table = (int) Math.sqrt(number);
+			// System.out.println(number);
+			// System.out.println(table);
+			Form form = new Form(table, number);
 			form.print();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -36,16 +37,30 @@ public class BingoMain {
 	public class Form {
 		int table;
 		int number;
-		public Form(int table,int number) {
+
+		public Form(int table, int number) {
 			this.table = table;
 			this.number = number;
-			
+
 		}
+
 		public void print() {
-			for(int i =1;i<=number;i++) {
-				System.out.println(i);
+			List<Integer> numbers = new ArrayList<>();
+			for (int i = 1; i <= number; i++) {
+				numbers.add(i);
+				Collections.shuffle(numbers);
+			}
+			for (int p = 0; p < numbers.size(); p++) {
+				if (numbers.get(p) > 9) {
+					System.out.print(numbers.get(p) + " ");
+				} else {
+					System.out.print(" " + numbers.get(p) + " ");
+				}
+				if (p % 5 == 4) {
+					System.out.println();
+				}
 			}
 		}
-	}
 
+	}
 }
