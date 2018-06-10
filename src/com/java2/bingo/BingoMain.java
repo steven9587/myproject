@@ -69,7 +69,6 @@ public class BingoMain {
 				}
 				System.out.println();
 			}
-
 			/*
 			 * 用list方法印出 for (int p = 0; p < numbers.size(); p++) { if (numbers.get(p) > 9)
 			 * {
@@ -88,12 +87,19 @@ public class BingoMain {
 			int slash = 0;
 			int[][] finaltable = new int[table][table];
 			
-			//判斷橫的
+			//放值
 			for (int i = 0; i < table; i++) {
-				rowbingo = 0;
 				for (int j = 0; j < table; j++) {
-					for (int p = 0; p < answers.size(); p++) {
-						if (finaltable[i][j] == answers.get(p)) {
+					finaltable[i][j] = numbers.get(i * table + j);
+				}
+			}
+			
+			//判斷橫的
+			for (int ri = 0; ri < table; ri++) {
+				rowbingo = 0;
+				for (int rj = 0; rj < table; rj++) {
+					for (int rp = 0; rp < answers.size(); rp++) {
+						if (finaltable[ri][rj] == answers.get(rp)) {
 							rowbingo+=1;
 						}
 					}
@@ -102,13 +108,13 @@ public class BingoMain {
 					row+=1;
 				}
 			}
-			System.out.println("橫線"+row+"條");
+			System.out.println("橫線："+row+"條");
 			//判斷直的
-			for (int i = 0; i < table; i++) {
+			for (int ci = 0; ci < table; ci++) {
 				columnbingo = 0;
-				for (int j = 0; j < table; j++) {
-					for (int p = 0; p < answers.size(); p++) {
-						if (finaltable[j][i] == answers.get(p)) {
+				for (int cj = 0; cj < table; cj++) {
+					for (int cp = 0; cp < answers.size(); cp++) {
+						if (finaltable[cj][ci] == answers.get(cp)) {
 							columnbingo+=1;
 						}
 					}
@@ -117,12 +123,12 @@ public class BingoMain {
 					column+=1;
 				}
 			}
-			System.out.println("直線"+column+"條");
+			System.out.println("直線："+column+"條");
 			//判斷斜線的(左上到右下)
 			slashbingo = 0;
-			for (int i = 0; i < table; i++) {
-					for (int p = 0; p < answers.size(); p++) {
-						if (finaltable[i][i] == answers.get(p)) {
+			for (int si1 = 0; si1 < table; si1++) {
+					for (int sp1 = 0; sp1 < answers.size(); sp1++) {
+						if (finaltable[si1][si1] == answers.get(sp1)) {
 							slashbingo+=1;
 						}
 					}
@@ -132,9 +138,9 @@ public class BingoMain {
 			}
 			//判斷斜線的(右上到左下)
 			slashbingo = 0;
-			for (int i = 0; i < table; i++) {
-					for (int p = 0; p < answers.size(); p++) {
-						if (finaltable[i][table-(i+1)] == answers.get(p)) {
+			for (int si2 = 0; si2 < table; si2++) {
+					for (int sp2 = 0; sp2 < answers.size(); sp2++) {
+						if (finaltable[si2][table-(si2+1)] == answers.get(sp2)) {
 							slashbingo+=1;
 						}
 					}
@@ -142,7 +148,8 @@ public class BingoMain {
 					slash+=1;
 				}
 			}
-			System.out.println("斜線"+slash+"條");
+			System.out.println("斜線："+slash+"條");
+			System.out.println("共："+(row+column+slash)+"條");
 		}
 	}
 }
