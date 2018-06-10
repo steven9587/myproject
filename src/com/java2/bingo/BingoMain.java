@@ -27,6 +27,7 @@ public class BingoMain {
 			}
 			Form form = new Form(table, number, answers);
 			form.print();
+			form.bingo();
 			// System.out.println(answers);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -79,7 +80,69 @@ public class BingoMain {
 		}
 
 		public void bingo() {
-
+			int rowbingo ;
+			int row = 0;
+			int columnbingo ;
+			int column = 0;
+			int slashbingo ;
+			int slash = 0;
+			int[][] finaltable = new int[table][table];
+			
+			//判斷橫的
+			for (int i = 0; i < table; i++) {
+				rowbingo = 0;
+				for (int j = 0; j < table; j++) {
+					for (int p = 0; p < answers.size(); p++) {
+						if (finaltable[i][j] == answers.get(p)) {
+							rowbingo+=1;
+						}
+					}
+				}
+				if(rowbingo==5) {
+					row+=1;
+				}
+			}
+			System.out.println("橫線"+row+"條");
+			//判斷直的
+			for (int i = 0; i < table; i++) {
+				columnbingo = 0;
+				for (int j = 0; j < table; j++) {
+					for (int p = 0; p < answers.size(); p++) {
+						if (finaltable[j][i] == answers.get(p)) {
+							columnbingo+=1;
+						}
+					}
+				}
+				if(columnbingo==5) {
+					column+=1;
+				}
+			}
+			System.out.println("直線"+column+"條");
+			//判斷斜線的(左上到右下)
+			slashbingo = 0;
+			for (int i = 0; i < table; i++) {
+					for (int p = 0; p < answers.size(); p++) {
+						if (finaltable[i][i] == answers.get(p)) {
+							slashbingo+=1;
+						}
+					}
+				if(slashbingo==5) {
+					slash+=1;
+				}
+			}
+			//判斷斜線的(右上到左下)
+			slashbingo = 0;
+			for (int i = 0; i < table; i++) {
+					for (int p = 0; p < answers.size(); p++) {
+						if (finaltable[i][table-(i+1)] == answers.get(p)) {
+							slashbingo+=1;
+						}
+					}
+				if(slashbingo==5) {
+					slash+=1;
+				}
+			}
+			System.out.println("斜線"+slash+"條");
 		}
 	}
 }
