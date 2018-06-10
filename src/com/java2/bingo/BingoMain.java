@@ -43,6 +43,7 @@ public class BingoMain {
 		int table;
 		int number;
 		List<Integer> answers;
+		List<Integer> numbers = new ArrayList<>();
 
 		public Form(int table, int number, List<Integer> answers) {
 			this.table = table;
@@ -51,7 +52,6 @@ public class BingoMain {
 		}
 
 		public void print() {
-			List<Integer> numbers = new ArrayList<>();
 			for (int i = 1; i <= number; i++) {
 				numbers.add(i);
 			}
