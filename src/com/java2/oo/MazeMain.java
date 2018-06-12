@@ -36,7 +36,7 @@ public class MazeMain {
 			Maze m = new Maze(row, col, trapCount);
 			Random r = new Random();
 			Set<String> set = new TreeSet<>();
-			while (set.size() < 5) {
+			while (set.size() < trapCount) {
 				String trap = String.valueOf(r.nextInt(24));
 				set.add(trap);
 			}
