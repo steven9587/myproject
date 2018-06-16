@@ -45,15 +45,7 @@ public class Main {
 				course4.add(tokens4[i]);
 			}
 			// System.out.println(course4);
-			// 輸入資料
-			System.out.print("請輸入星期(1-7):");
-			Scanner scanner = new Scanner(System.in);
-			String entry = scanner.nextLine();
-			int day = Integer.parseInt(entry);
-			System.out.print("請輸入時(0-24):");
-			entry = scanner.nextLine();
-			int time = Integer.parseInt(entry);
-			Course course = new Course(course1, course2, course3, course4, day, time);
+			Course course = new Course(course1, course2, course3, course4);
 			course.Judgment();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -73,51 +65,89 @@ public class Main {
 		List<String> course2;
 		List<String> course3;
 		List<String> course4;
-		int day;
-		int time;
 
-		public Course(List<String> course1, List<String> course2, List<String> course3, List<String> course4, int day,
-				int time) {
+		public Course(List<String> course1, List<String> course2, List<String> course3, List<String> course4) {
 			this.course1 = course1;
 			this.course2 = course2;
 			this.course3 = course3;
 			this.course4 = course4;
-			this.day = day;
-			this.time = time;
 		}
 
 		public void Judgment() {
-			// 判斷13~16(星期四)
-			if (time > Integer.parseInt(course1.get(3))
-					&& (time < Integer.parseInt(course1.get(3)) + Integer.parseInt((course1.get(4))))
-					&& (day == Integer.parseInt(course1.get(2)))) {
-				System.out.println("【有課：  " + course1.get(0) + " " + course1.get(1) + " " + "到" + " "
-						+ (course1.get(3) + course1.get(4)) + "】");
-			} else {
-				if (time > Integer.parseInt(course2.get(3))
-						&& (time < Integer.parseInt(course2.get(3)) + Integer.parseInt((course2.get(4))))
-						&& (day == Integer.parseInt(course2.get(2)))) {
-					System.out.println("【有課：  " + course2.get(0) + " " + course2.get(1) + " " + "到" + " "
-							+ (course2.get(3) + course2.get(4)) + "】");
-				} else {
-					if (time > Integer.parseInt(course3.get(3))
-							&& (time < Integer.parseInt(course3.get(3)) + Integer.parseInt((course3.get(4))))
-							&& (day == Integer.parseInt(course3.get(2)))) {
-						System.out.println("【有課：  " + course3.get(0) + " " + course3.get(1) + " " + "到" + " "
-								+ (course3.get(3) + course3.get(4)) + "】");
+			/*
+			 * 判斷(for迴圈) if (time > Integer.parseInt(course1.get(3)) && (time <
+			 * Integer.parseInt(course1.get(3)) + Integer.parseInt((course1.get(4)))) &&
+			 * (day == Integer.parseInt(course1.get(2)))) { System.out.println("【有課：  " +
+			 * course1.get(0) + " " + course1.get(1) + " " + "到" + " " + (course1.get(3) +
+			 * course1.get(4)) + "】"); } else { if (time > Integer.parseInt(course2.get(3))
+			 * && (time < Integer.parseInt(course2.get(3)) +
+			 * Integer.parseInt((course2.get(4)))) && (day ==
+			 * Integer.parseInt(course2.get(2)))) { System.out.println("【有課：  " +
+			 * course2.get(0) + " " + course2.get(1) + " " + "到" + " " + (course2.get(3) +
+			 * course2.get(4)) + "】"); } else { if (time > Integer.parseInt(course3.get(3))
+			 * && (time < Integer.parseInt(course3.get(3)) +
+			 * Integer.parseInt((course3.get(4)))) && (day ==
+			 * Integer.parseInt(course3.get(2)))) { System.out.println("【有課：  " +
+			 * course3.get(0) + " " + course3.get(1) + " " + "到" + " " + (course3.get(3) +
+			 * course3.get(4)) + "】"); } else { if (time > Integer.parseInt(course4.get(3))
+			 * && (time < Integer.parseInt(course4.get(3)) +
+			 * Integer.parseInt((course4.get(4)))) && (day ==
+			 * Integer.parseInt(course4.get(2)))) { System.out.println("【有課：  " +
+			 * course4.get(0) + " " + course4.get(1) + " " + "到" + " " + (course4.get(3) +
+			 * course4.get(4)) + "】"); } else { System.out.println("【有空檔】"); } } } }
+			 */
+			// 判斷while迴圈&switch-case
+
+			int judgement = 1;
+			while (judgement == 1) {
+				System.out.print("請輸入星期(1-7)或輸入0離開:");
+				Scanner scanner = new Scanner(System.in);
+				String entry = scanner.nextLine();
+				int day = Integer.parseInt(entry);
+				System.out.print("請輸入時(0-24)或輸入0離開:");
+				entry = scanner.nextLine();
+				int time = Integer.parseInt(entry);
+				switch (day) {
+				case 2:
+					if (time >= Integer.parseInt(course1.get(3))
+							&& (time <= Integer.parseInt(course1.get(3)) + Integer.parseInt((course1.get(4))))) {
+						System.out.println("【有課：  " + course1.get(0) + " " + course1.get(1) + " " + "到" + " "
+								+ (Integer.parseInt(course1.get(3)) + Integer.parseInt(course1.get(4))) + "】");
 					} else {
-						if (time > Integer.parseInt(course4.get(3))
-								&& (time < Integer.parseInt(course4.get(3)) + Integer.parseInt((course4.get(4))))
-								&& (day == Integer.parseInt(course4.get(2)))) {
+						System.out.println("【有空檔】");
+					}
+					break;
+				case 4:
+					if (time >= Integer.parseInt(course2.get(3))
+							&& (time <= Integer.parseInt(course2.get(3)) + Integer.parseInt((course2.get(4))))) {
+						System.out.println("【有課：  " + course2.get(0) + " " + course2.get(1) + " " + "到" + " "
+								+ (Integer.parseInt(course2.get(3)) + Integer.parseInt(course2.get(4))) + "】");
+					} else {
+						if (time >= Integer.parseInt(course4.get(3))
+								&& (time <= Integer.parseInt(course4.get(3)) + Integer.parseInt((course4.get(4))))) {
 							System.out.println("【有課：  " + course4.get(0) + " " + course4.get(1) + " " + "到" + " "
-									+ (course4.get(3) + course4.get(4)) + "】");
+									+ (Integer.parseInt(course4.get(3)) + Integer.parseInt(course4.get(4))) + "】");
 						} else {
 							System.out.println("【有空檔】");
 						}
 					}
+					break;
+				case 1:
+					if (time > Integer.parseInt(course3.get(3))
+							&& (time < Integer.parseInt(course3.get(3)) + Integer.parseInt((course3.get(4))))) {
+						System.out.println("【有課：  " + course3.get(0) + " " + course3.get(1) + " " + "到" + " "
+								+ (Integer.parseInt(course3.get(3)) + Integer.parseInt(course3.get(4))) + "】");
+					} else {
+						System.out.println("【有空檔】");
+					}
+					break;
+				case 0:
+					judgement += 1;
+					break;
+				default:
+					System.out.println("【有空檔】");
 				}
 			}
-
 		}
 	}
 }
