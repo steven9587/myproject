@@ -72,6 +72,32 @@ public class Main {
 			this.course3 = course3;
 			this.course4 = course4;
 		}
+		
+
+		public List<String> getCourse1() {
+			return course1;
+		}
+		public void setCourse1(List<String> course1) {
+			this.course1 = course1;
+		}
+		public List<String> getCourse2() {
+			return course2;
+		}
+		public void setCourse2(List<String> course2) {
+			this.course2 = course2;
+		}
+		public List<String> getCourse3() {
+			return course3;
+		}
+		public void setCourse3(List<String> course3) {
+			this.course3 = course3;
+		}
+		public List<String> getCourse4() {
+			return course4;
+		}
+		public void setCourse4(List<String> course4) {
+			this.course4 = course4;
+		}
 
 		public void Judgment() {
 			/*
