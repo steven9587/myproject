@@ -77,6 +77,38 @@ public class BingoMain {
 			 * numbers.get(p) + " "); } if (p % 5 == 4) { System.out.println(); } }
 			 */
 		}
+		
+		public int getTable() {
+			return table;
+		}
+
+		public void setTable(int table) {
+			this.table = table;
+		}
+
+		public int getNumber() {
+			return number;
+		}
+
+		public void setNumber(int number) {
+			this.number = number;
+		}
+
+		public List<Integer> getAnswers() {
+			return answers;
+		}
+
+		public void setAnswers(List<Integer> answers) {
+			this.answers = answers;
+		}
+
+		public List<Integer> getNumbers() {
+			return numbers;
+		}
+
+		public void setNumbers(List<Integer> numbers) {
+			this.numbers = numbers;
+		}
 
 		public void bingo() {
 			int rowbingo ;
