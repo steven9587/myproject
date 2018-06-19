@@ -25,6 +25,7 @@ public class Myserver {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("Error Eessage!");
 		}
 	}
 
